@@ -1,22 +1,16 @@
+import { Route, Routes } from "react-router-dom"
 import InputField from "./component/InputField"
+import LoginPage from "./component/loginPage"
+import SignUpPage from "./component/signUpPage"
 import SocialLogin from "./component/SocialLogin"
 
 const App =()=>{
   return(
-    <div className="login-container">
-      <h2 className="form-title">Login with</h2>
-      <SocialLogin />
-      <p className="seprator"><span>or</span></p>
-      <form action="#" className="login-form">
-        <InputField type="email" placeholder="Email Address" icon="mail"/>
-        <InputField type="password" placeholder="Password" icon="lock"/>
+    <Routes>
+      <Route path="/" element={<LoginPage/>}/>
 
-       
-        <a href="#" className="forgot-pass-link">Forgot password?</a>
-        <button className="login-button">Log In</button>
-      </form>
-      <p className="signup-text">Don't have an account?<a href="#" >Signup Now</a></p>
-    </div>
+      <Route path="/signup" element={<SignUpPage/>}/>
+    </Routes>
   )
 }
 export default App

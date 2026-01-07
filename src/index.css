@@ -178,12 +178,12 @@ body{
     margin: 1.75rem 0 0.31rem;
 }
 
-.login-container a{
+.login-container Link{
     font-weight: 500;
     color: #5F41E4;
     text-decoration: none;
 }
 
-.login-container a:hover{
+.login-container Link:hover{
     text-decoration: underline;
 }
