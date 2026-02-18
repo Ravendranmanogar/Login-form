@@ -1,15 +1,16 @@
 import { Route, Routes } from "react-router-dom"
-import InputField from "./component/InputField"
 import LoginPage from "./component/loginPage"
 import SignUpPage from "./component/signUpPage"
-import SocialLogin from "./component/SocialLogin"
+import ForgotPassword from "./component/forgotPassword"
+import ResetPassword from "./component/resetPassword"
 
 const App =()=>{
   return(
     <Routes>
       <Route path="/" element={<LoginPage/>}/>
-
+      <Route path="/forgotPassword" element={<ForgotPassword/>}/>
       <Route path="/signup" element={<SignUpPage/>}/>
+      <Route path="/reset-password" element={<ResetPassword/>}/>
     </Routes>
   )
 }
