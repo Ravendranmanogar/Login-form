@@ -11,7 +11,7 @@ const SignUpPage = () =>{
     const [confirmPassword,setConfirmPassword]=useState("")
     const [error,setErorr]=useState(null)
 
-    const handleLogin =async(e)=>{
+    const handleSignUp =async(e)=>{
         e.preventDefault();
 
         if(password !== confirmPassword){
@@ -24,16 +24,21 @@ const SignUpPage = () =>{
         if(error){
             setErorr(error.message)
         }else{
-            navigate("/")
+            navigate("/signup")
         }
         
+    }
+
+    const handleLogin=(e)=>{
+        e.preventDefault();
+        navigate('/')
     }
     return(
         <div className="login-container">
             <h2 className="form-title">Signup with</h2>
             <SocialLogin />
             <p className="seprator"><span>or</span></p>
-            <form onSubmit={handleLogin} action="#" className="login-form">
+            <form onSubmit={handleSignUp} action="#" className="login-form">
                 <InputField type="email" placeholder="Email Address" icon="mail" value={email} onChange={e => setEmail(e.target.value)}/>
                 <InputField type="password" placeholder="Create New Password" icon="lock" value={password} onChange={e => setPassword(e.target.value)}/>
                 <InputField type="password" placeholder="Confirm Password" icon="lock" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
