@@ -15,11 +15,14 @@ const LoginPage =()=>{
 
     const handleLogin=async(e)=>{
         e.preventDefault();
+        console.log("Login Clicked")
         const {error} = await supabase.auth.signInWithPassword({
           email,
           password,
         })
+        console.log("Login Result: ",data,error)
         if(error){
+          console.log("Login Error:",error.message)
           setErorr(error.message)
         }
         else{
