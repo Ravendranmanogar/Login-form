@@ -5,6 +5,7 @@ import ForgotPassword from "./component/forgotPassword"
 import ResetPassword from "./component/resetPassword"
 import Dashboard from "./component/dashboard"
 import ProtectedRoute from "./component/protectedRoute"
+import Confirmation from "./component/confirmation"
 
 const App =()=>{
   return(
@@ -14,6 +15,7 @@ const App =()=>{
       <Route path="/signup" element={<SignUpPage/>}/>
       <Route path="/reset-password" element={<ResetPassword/>}/>
       <Route path="/dashboard" element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
+      <Route path="/confirmation" element={<Confirmation />}/>
     </Routes>
   )
 }

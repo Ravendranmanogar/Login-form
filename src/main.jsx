@@ -6,7 +6,7 @@ import App from './App.jsx'
 import { AuthProvider } from './component/authContext.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  
     <BrowserRouter>
       <AuthProvider>
         <App />
@@ -14,5 +14,5 @@ createRoot(document.getElementById('root')).render(
       
     </BrowserRouter>
     
-  </StrictMode>,
+  
 )

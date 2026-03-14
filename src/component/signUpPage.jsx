@@ -9,24 +9,29 @@ const SignUpPage = () =>{
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
     const [confirmPassword,setConfirmPassword]=useState("")
-    const [error,setErorr]=useState(null)
+    const [error,setError]=useState(null)
 
-    const handleSignUp =async(e)=>{
-        e.preventDefault();
+    
+    const handleSignUp = async (e) => {
+        e.preventDefault()
 
-        if(password !== confirmPassword){
-            setErorr("Passwords do not match")
+        if (password !== confirmPassword) {
+            setError("Passwords do not match")
+            return
         }
 
-        const{error} = await supabase.auth.signUp({
-            email,password
+        const { error } = await supabase.auth.signUp({
+            email,
+            password
         })
-        if(error){
-            setErorr(error.message)
-        }else{
-            navigate("/signup")
+
+        if (error) {
+            setError(error.message)
+            return
         }
-        
+
+  // Only reach here if signup actually succeeded
+        navigate("/confirmation")
     }
 
     const handleLogin=(e)=>{
@@ -38,14 +43,14 @@ const SignUpPage = () =>{
             <h2 className="form-title">Signup with</h2>
             <SocialLogin />
             <p className="seprator"><span>or</span></p>
-            <form onSubmit={handleSignUp} action="#" className="login-form">
+            <form onSubmit={handleSignUp}  action="#" className="login-form">
                 <InputField type="email" placeholder="Email Address" icon="mail" value={email} onChange={e => setEmail(e.target.value)}/>
                 <InputField type="password" placeholder="Create New Password" icon="lock" value={password} onChange={e => setPassword(e.target.value)}/>
                 <InputField type="password" placeholder="Confirm Password" icon="lock" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}/>
                 
                 {error && <p className="error">{error}</p>}
 
-                <button className="login-button">Create Account</button>
+                <button type="submit" className="login-button">Create Account</button>
             </form>
             <p onClick={handleLogin} className="signup-text">Already have an account?<a href="#" >Login Now</a></p>
         </div>

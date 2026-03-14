@@ -11,24 +11,30 @@ const LoginPage =()=>{
 
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
-    const [error,setErorr]=useState("")
+    const [error,setError]=useState("")
 
-    const handleLogin=async(e)=>{
-        e.preventDefault();
-        console.log("Login Clicked")
-        const {error} = await supabase.auth.signInWithPassword({
-          email,
-          password,
-        })
-        console.log("Login Result: ",data,error)
-        if(error){
-          console.log("Login Error:",error.message)
-          setErorr(error.message)
-        }
-        else{
-          navigate('/dashboard')
-        }    
+    const handleLogin = async (e) => {
+  e.preventDefault()
+
+  console.log("Before Supabase call")
+
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password
+    })
+
+    console.log("After Supabase call", data, error)
+
+    if (error) {
+      setError(error.message)
+    } else {
+      navigate("/dashboard")
     }
+  } catch (err) {
+    console.log("Caught error:", err)
+  }
+}
 
     const handleSignUp=(e)=>{
       e.preventDefault(),
